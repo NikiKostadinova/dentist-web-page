@@ -1,1 +1,0 @@
-# dentist-web-page

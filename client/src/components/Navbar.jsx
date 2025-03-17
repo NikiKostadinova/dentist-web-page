@@ -7,7 +7,7 @@ export default function Navbar() {
         <nav className='bg-transparent bg-[#63918b] bg-opacity-40 text-[#484849] font-serif px-8  '>
             <div className='container mx-auto py-2 flex justify-between items-center'>
             <div className='flex items-center'>
-                    <img src={Logo_Dentist} alt="Logo" className='h-8 md:h-8 w-auto mr-2' />
+                    <img src={Logo_Dentist} alt="Logo" className='h-6 w-6 md:h-8 md:w-auto mr-2' />
                     <div className='text-xl font-bold hidden md:inline'>Dr. Dimitar Donchev</div>
                 </div>
 

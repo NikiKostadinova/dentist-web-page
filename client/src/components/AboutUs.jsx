@@ -3,7 +3,7 @@ import pic1 from '../assets/pic1.jpg'
 
 export default function AboutUs() {
     return (
-        <div className='bg-[#f7fafa] text-[#484849] h-screen font-serif py-20' id='about'>
+        <div className='bg-[#f7fafa] text-[#484849] md:h-screen font-serif py-20' id='about'>
             <div className='container mx-auto px-8 md:px-16 lg:px-24'>
                
                 <div className='flex flex-col md:flex-row items-center md:space-x-12 mx-6'>

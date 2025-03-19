@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRoute.js';
-import authRoute from './routes/authRoute.js';
+import authRoutes from './routes/authRoute.js';
 
 
 dotenv.config();
@@ -23,7 +23,7 @@ app.listen(3000, () => {
 });
 
 app.use('/api/user', userRouter);
-app.use('/api/auth', authRoute);
+app.use('/api/auth', authRoutes);
 
 
 app.use((err, req, res, next) => {

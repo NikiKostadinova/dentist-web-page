@@ -4,6 +4,7 @@ import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 
 
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect} from 'react';
 
 // import { FaMoon, FaSun } from 'react-icons/fa';
 // import { useSelector, useDispatch } from 'react-redux';
@@ -16,6 +17,7 @@ import Logo_Dentist from '../assets/Logo_Dentist.png'
 export default function Header() {
 
     const path = useLocation().pathname;
+    const [isVisible, setIsVisible] = useState(false);
     // const dispatch = useDispatch();
     // const { currentUser } = useSelector(state => state.user);
     // const { theme } = useSelector((state) => state.theme);
@@ -36,6 +38,21 @@ export default function Header() {
     //     console.log(error.message);
     //   }
     // }
+
+
+    useEffect(() => {
+      const handleKeyPress = (event) => {
+        if(event.shiftKey && event.code === 'KeyA'){
+          setIsVisible(true);
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyPress);
+
+      return ()=> {
+        window.removeEventListener('keydown', handleKeyPress);
+    };
+    }, [setIsVisible]);
     return (
         // <nav className='bg-transparent bg-[#63918b] bg-opacity-40 text-[#484849] font-serif px-8  '>
         //     <div className='container mx-auto py-2 flex justify-between items-center'>
@@ -96,6 +113,13 @@ export default function Header() {
             </Navbar.Link>
           </Link>
         </Navbar.Collapse>
+         {isVisible && (
+           
+           <Link to='/login'>
+              <Button className='bg-gradient-to-r from-teal-600 to-emerald-300 text-white font-serif  rounded-full'>Log In</Button>
+            </Link>
+         )}
+       
       </Navbar >
 
     )

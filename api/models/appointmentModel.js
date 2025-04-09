@@ -25,13 +25,7 @@ const appointmentSchema = new mongoose.Schema({
   service: {
     type: String,
     required: true,
-    enum: [
-      "Teeth Cleaning",
-      "Cavity Filling",
-      "Teeth Whitening",
-      "Braces Consultation",
-      "Root Canal",
-    ], // Dropdown options
+    default1: 'uncategorized'
   },
   date: {
     type: Date,
@@ -41,11 +35,9 @@ const appointmentSchema = new mongoose.Schema({
     type: String, // Store time separately (e.g., "14:30")
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+ 
+},{timestamps: true}
+);
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 export default Appointment;

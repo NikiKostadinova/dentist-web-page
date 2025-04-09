@@ -8,6 +8,8 @@ import HomePage from './pages/homeScreen/HomeScreen';
 import Header from './components/Header';
 import Footer from './components/Footer'
 import AddAppointment from './pages/AddAppointment';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
@@ -22,6 +24,11 @@ export default function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add-appointment" element={<AddAppointment/>}/>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+         
+        </Route>
         
       </Routes>
       

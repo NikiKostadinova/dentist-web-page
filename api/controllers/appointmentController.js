@@ -50,20 +50,57 @@ export const getAppointments = async (req, res, next) => {
 };
 
 // Get single appointment by ID
-export const getAppointment = async (req, res, next) => {
+// export const getAppointment = async (req, res, next) => {
+//     try {
+//         const appointment = await Appointment.findById(req.params.id);
+//         if (!appointment) {
+//             return next(errorHandler(404, 'Appointment not found!'));
+//         }
+//         res.status(200).json(appointment);
+//     } catch (error) {
+//         next(error);
+//     }
+// };
+
+// export const getAppointmentsByDate = async (req, res, next) => {
+    
+//     try {
+//       const { date } = req.query;
+//       console.log(date);
+//       if (!date) {
+//         return next(errorHandler(400, 'Date query is required!'));
+//       }
+  
+//       const appointments = await Appointment.find({ date: new Date(date) });
+//       res.status(200).json(appointments);
+//     } catch (error) {
+//       next(error);
+//     }
+//   };
+
+  export const getAppointmentsByRange = async (req, res, next) => {
     try {
-        const appointment = await Appointment.findById(req.params.id);
-        if (!appointment) {
-            return next(errorHandler(404, 'Appointment not found!'));
+      const { start, end } = req.query;
+      if (!start || !end) {
+        return next(errorHandler(400, 'Start and End query parameters are required!'));
+      }
+  
+      const appointments = await Appointment.find({
+        date: { 
+          $gte: new Date(start), 
+          $lte: new Date(end) 
         }
-        res.status(200).json(appointment);
+      });
+  
+      res.status(200).json(appointments);
     } catch (error) {
-        next(error);
+      next(error);
     }
-};
+  };
 
 // Delete appointment
 export const deleteAppointment = async (req, res, next) => {
+    console.log(req)
     try {
         await Appointment.findByIdAndDelete(req.params.id);
         res.status(200).json('Appointment has been deleted!');
